@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assetra – AI-Autonomous Real World Asset (RWA) Ecosystem</title>
+  <meta name="description" content="Assetra is a decentralized RWA tokenization protocol powered by autonomous AI underwriter agents. Fractionalize, evaluate, and trade real estate, debt, and commodities." />
+  <meta name="keywords" content="Assetra, RWA, AI crypto, Real World Assets, AI underwriting, Web3, Robinhood Chain, SDK, terminal" />
+  <meta name="author" content="Assetra Protocol" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#060608" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://assetra.finance/" />
+
+  <!-- Preconnect and Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Floating Particles Canvas Background -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- Global Progress Bar -->
+  <div id="scrollProgress"></div>
+
+  <!-- Navigation Bar -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo" id="navLogo">
+        <div class="logo-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Outer Hexagon in Neon Green -->
+            <polygon points="16,2 30,9 30,23 16,30 2,23 2,9" stroke="#b5ff2d" stroke-width="1.8" fill="none" />
+            
+            <!-- Inner 3D Network Wireframe in Cyan -->
+            <path d="M16,6 L24,11 L24,21 L16,26 L8,21 L8,11 Z" stroke="#00e5ff" stroke-width="1" stroke-opacity="0.8" />
+            <path d="M16,6 L16,13 L11,15 L8,11 M16,13 L21,15 L24,11 M11,15 L21,15 M11,15 L8,21 M21,15 L24,21 M11,15 L16,26 M21,15 L16,26 M16,13 L16,26" stroke="#00e5ff" stroke-width="1" stroke-opacity="0.8" />
+            <path d="M8,11 L16,13 L24,11" stroke="#00e5ff" stroke-width="1" stroke-opacity="0.8" />
+
+            <!-- Nodes -->
+            <circle cx="16" cy="6" r="1.5" fill="#00e5ff" />
+            <circle cx="24" cy="11" r="1.5" fill="#00e5ff" />
+            <circle cx="24" cy="21" r="1.5" fill="#00e5ff" />
+            <circle cx="16" cy="26" r="1.5" fill="#00e5ff" />
+            <circle cx="8" cy="21" r="1.5" fill="#00e5ff" />
+            <circle cx="8" cy="11" r="1.5" fill="#00e5ff" />
+            <circle cx="16" cy="13" r="1.8" fill="#b5ff2d" />
+            <circle cx="11" cy="15" r="1.5" fill="#00e5ff" />
+            <circle cx="21" cy="15" r="1.5" fill="#00e5ff" />
+          </svg>
+        </div>
+        <span class="logo-text">ASSETRA</span>
+      </a>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active" id="link-home">Home</a></li>
+        <li><a href="#terminal-section" class="nav-link" id="link-terminal">Terminal CLI</a></li>
+        <li><a href="#ai-fleet" class="nav-link" id="link-fleet">AI Agents</a></li>
+        <li><a href="#assets-showcase" class="nav-link" id="link-assets">Tokenized RWAs</a></li>
+        <li><a href="#analytics" class="nav-link" id="link-analytics">Analytics</a></li>
+        <li><a href="#docs" class="nav-link" id="link-docs">Docs</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#terminal-section" class="btn btn-outline nav-cta-sec" id="navTerminalBtn">Explore CLI</a>
+        <a href="#" class="btn btn-primary nav-cta" id="navLaunchBtn">Launch App</a>
+      </div>
+      
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="home" class="hero">
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-glow-amber"></div>
+    <div class="hero-glow-cyan"></div>
+    
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge" id="heroBadge">
+          <span class="badge-dot"></span>
+          <span class="badge-text">RWA + AI ECOSYSTEM GENERATION</span>
+        </div>
+        <h1 class="hero-title">
+          Autonomous AI Underwriting For <span class="text-gradient-gold">Real-World Assets</span>
+        </h1>
+        <p class="hero-description">
+          Assetra bridges physical assets with liquid decentralized markets. Our autonomous AI agent fleet conducts on-chain valuations, compliance auditing, and risk management in real time.
+        </p>
+
+        <!-- Command Line Installation Widget -->
+        <div class="hero-cli-widget" id="cliWidget">
+          <div class="cli-header">
+            <span class="cli-dot red"></span>
+            <span class="cli-dot yellow"></span>
+            <span class="cli-dot green"></span>
+            <span class="cli-title">developer-setup.sh</span>
+          </div>
+          <div class="cli-body">
+            <span class="cli-prompt">$</span>
+            <code class="cli-command" id="installCmd">npm install -g @assetra/sdk</code>
+            <button class="cli-copy-btn" id="copyBtn" aria-label="Copy installation command">
+              <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span class="copy-text">Copy</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#terminal-section" class="btn btn-primary" id="heroExploreBtn">Try Terminal Simulator</a>
+          <a href="#docs" class="btn btn-outline" id="heroDocsBtn">Read Developer SDK</a>
+        </div>
+      </div>
+
+      <!-- Hero Dashboard Visual Mockup -->
+      <div class="hero-visual" id="heroVisual">
+        <div class="visual-card glass">
+          <div class="visual-header">
+            <div class="header-info">
+              <span class="card-status active">LIVE UNDERWRITING</span>
+              <h4>Asset Valuation Index</h4>
+            </div>
+            <div class="header-value text-gold">$148,902,410</div>
+          </div>
+          <div class="visual-chart-container">
+            <canvas id="miniHeroChart" width="380" height="180"></canvas>
+          </div>
+          <div class="visual-stats">
+            <div class="stat-box">
+              <span class="stat-label">AI Consensus</span>
+              <span class="stat-val text-cyan">99.4%</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">Avg APY</span>
+              <span class="stat-val text-gold">9.12%</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">RWA Minted</span>
+              <span class="stat-val">24,910 AST</span>
+            </div>
+          </div>
+        </div>
+        <div class="floating-agent-bubble glass" id="agentBubble1">
+          <div class="bubble-icon cyan-glow">🤖</div>
+          <div class="bubble-text">
+            <h5>ValuerAgent-04</h5>
+            <p>Scanning property AST-01...</p>
+          </div>
+        </div>
+        <div class="floating-agent-bubble glass" id="agentBubble2">
+          <div class="bubble-icon amber-glow">⚖️</div>
+          <div class="bubble-text">
+            <h5>RiskOracle-09</h5>
+            <p>Risk Score: 98/100 (Safe)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Interactive Terminal Section -->
+  <section id="terminal-section" class="terminal-sec">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="section-subtitle monospace">CLI PLAYGROUND</span>
+        <h2 class="section-title">Control Assetra via Terminal</h2>
+        <p class="section-description">
+          Interact directly with the protocol. Run automated audits, fetch RWA yields, and query AI underwriters using our terminal interface. Click a quick command chip or type your own.
+        </p>
+      </div>
+
+      <!-- Quick Commands Chips -->
+      <div class="terminal-chips-wrapper" id="terminalChips">
+        <button class="chip-cmd" data-cmd="help">help</button>
+        <button class="chip-cmd" data-cmd="assetra list">assetra list</button>
+        <button class="chip-cmd" data-cmd="assetra scan AST-01">assetra scan AST-01</button>
+        <button class="chip-cmd" data-cmd="assetra agents">assetra agents</button>
+        <button class="chip-cmd" data-cmd="assetra mint --asset AST-02">assetra mint AST-02</button>
+        <button class="chip-cmd" data-cmd="clear">clear</button>
+      </div>
+
+      <!-- Interactive Terminal Component -->
+      <div class="terminal-container glass" id="terminalContainer">
+        <div class="terminal-header">
+          <div class="window-controls">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="terminal-tab-title monospace">guest@assetra-node-1:~</span>
+          <div class="terminal-sys-status">
+            <span class="status-light pulse-cyan"></span>
+            <span class="monospace text-gray">AI Fleet: ONLINE</span>
+          </div>
+        </div>
+        
+        <div class="terminal-screen" id="terminalScreen">
+          <div class="terminal-output-line monospace text-cyan">Initializing Assetra Node Connection... [OK]</div>
+          <div class="terminal-output-line monospace text-gray">Welcome to Assetra CLI v1.0.4 - AI-Autonomous RWA Network.</div>
+          <div class="terminal-output-line monospace text-gray">Type 'help' to view the available commands or click the chips above.</div>
+          <div class="terminal-output-line monospace">&nbsp;</div>
+        </div>
+
+        <form class="terminal-input-row" id="terminalForm">
+          <span class="terminal-prompt monospace">guest@assetra:~$</span>
+          <input type="text" id="terminalInput" class="terminal-input monospace" autocomplete="off" autofocus placeholder="Type command here..." aria-label="Terminal Command Input" />
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Fleet Section -->
+  <section id="ai-fleet" class="fleet-sec">
+    <div class="container">
+      <div class="fleet-grid-layout">
+        <!-- Left: Intro to the Fleet -->
+        <div class="fleet-intro" id="aboutCol">
+          <span class="section-subtitle monospace text-cyan">COGNITIVE COMPLIANCE</span>
+          <h2 class="section-title">The Autonomous Underwriting Fleet</h2>
+          <p class="section-description">
+            Assetra replaces manual financial auditing and valuation with a coordinated multi-agent AI framework. Operating 24/7, our agents perform cross-border legal checks, algorithmic valuations, and liquidity management.
+          </p>
+          <div class="fleet-highlights">
+            <div class="high-item">
+              <div class="high-icon text-cyan">✓</div>
+              <div>
+                <h5>No Human Latency</h5>
+                <p>Asset audits complete in minutes instead of months.</p>
+              </div>
+            </div>
+            <div class="high-item">
+              <div class="high-icon text-cyan">✓</div>
+              <div>
+                <h5>Cross-Border Legal Engines</h5>
+                <p>Automatically checks asset compliance in 40+ jurisdictions.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Agent Cards -->
+        <div class="fleet-cards" id="ecosystemCol">
+          <div class="agent-card glass feat-big-card" id="agentCard1">
+            <div class="agent-card-header">
+              <div class="agent-avatar cyan-glow">AVE</div>
+              <div>
+                <h4>Valuation consensus (AVE)</h4>
+                <span class="agent-type">Assetra Valuation Engine</span>
+              </div>
+            </div>
+            <p class="agent-description">
+              Ingests real-time pricing feeds, historical transactions, and regional inflation rates to compute absolute asset valuation indexes.
+            </p>
+            <div class="agent-status-bar">
+              <span class="status-badge active">Consensus Achieved</span>
+              <span class="status-metric">Load: 42%</span>
+            </div>
+          </div>
+
+          <div class="agent-card glass feat-big-card" id="agentCard2">
+            <div class="agent-card-header">
+              <div class="agent-avatar gold-glow">ARO</div>
+              <div>
+                <h4>Risk Oracle (ARO)</h4>
+                <span class="agent-type">Autonomous Risk Oracle</span>
+              </div>
+            </div>
+            <p class="agent-description">
+              Continually runs simulations of economic downturns, liquidity events, and collateral degradation to dynamically adjust LTV parameters.
+            </p>
+            <div class="agent-status-bar">
+              <span class="status-badge active">Monitoring</span>
+              <span class="status-metric">Drift: 0.01%</span>
+            </div>
+          </div>
+
+          <div class="agent-card glass feat-big-card" id="agentCard3">
+            <div class="agent-card-header">
+              <div class="agent-avatar red-glow">CoTo</div>
+              <div>
+                <h4>Legal Tokenizer (CoTo)</h4>
+                <span class="agent-type">Compliant Tokenizer</span>
+              </div>
+            </div>
+            <p class="agent-description">
+              Binds real-world deeds, contracts, and registries to smart-contracts on-chain, preparing documents for KYC/AML verification.
+            </p>
+            <div class="agent-status-bar">
+              <span class="status-badge active">Auditing</span>
+              <span class="status-metric">Regs: SEC/ESMA</span>
+            </div>
+          </div>
+
+          <div class="agent-card glass feat-big-card" id="agentCard4">
+            <div class="agent-card-header">
+              <div class="agent-avatar emerald-glow">ALO</div>
+              <div>
+                <h4>Liquidity Router (ALO)</h4>
+                <span class="agent-type">Autonomous Liquidity Optimizer</span>
+              </div>
+            </div>
+            <p class="agent-description">
+              Orchestrates bridge liquidities, ensures optimal pricing in swap pools, and harvests yields for asset-backed pools.
+            </p>
+            <div class="agent-status-bar">
+              <span class="status-badge active">Optimizing</span>
+              <span class="status-metric">Total APY: 9.12%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RWA Asset Showcase -->
+  <section id="assets-showcase" class="assets-sec">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="section-subtitle monospace text-gold">ACTIVE PORTFOLIO</span>
+        <h2 class="section-title">Tokenized Real World Assets</h2>
+        <p class="section-description">
+          Explore institutional-grade assets underwritten by Assetra AI. Each asset is fractionalized, audited, and generates yield directly to stablecoin pools.
+        </p>
+      </div>
+
+      <div class="assets-grid">
+        <!-- Asset 1 -->
+        <div class="asset-card glass rm-card" id="featCard1">
+          <div class="asset-image-placeholder gold-glow">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#b5ff2d" stroke-width="1.5">
+              <path d="M3 21h18M3 10h18M5 10V21M19 10V21M9 10v11M15 10v11M12 2L3 10h18z"></path>
+            </svg>
+            <span class="asset-id-tag monospace">AST-01</span>
+          </div>
+          <div class="asset-body">
+            <div class="asset-meta">
+              <span class="asset-category">REAL ESTATE</span>
+              <span class="asset-status active">UNDERWRITTEN</span>
+            </div>
+            <h4>London Commercial Office Fund</h4>
+            <p>Premium office building in Central London. High occupancy rate with long-term commercial tenants.</p>
+            
+            <div class="asset-metrics-grid">
+              <div class="metric">
+                <span class="m-label">AI Health</span>
+                <span class="m-val text-cyan">98.4%</span>
+              </div>
+              <div class="metric">
+                <span class="m-label">Proj. APY</span>
+                <span class="m-val text-gold">7.80%</span>
+              </div>
+              <div class="metric">
+                <span class="m-label">Token TVL</span>
+                <span class="m-val">$12,450,000</span>
+              </div>
+            </div>
+          </div>
+          <div class="asset-footer">
+            <button class="btn btn-outline btn-full card-action-btn" data-target-cmd="assetra scan AST-01">Scan Asset Detail</button>
+          </div>
+        </div>
+
+        <!-- Asset 2 -->
+        <div class="asset-card glass rm-card" id="featCard2">
+          <div class="asset-image-placeholder cyan-glow">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="1.5">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+            <span class="asset-id-tag monospace">AST-02</span>
+          </div>
+          <div class="asset-body">
+            <div class="asset-meta">
+              <span class="asset-category">FIXED INCOME</span>
+              <span class="asset-status active">LIQUID POOL</span>
+            </div>
+            <h4>US Treasury Bills Index Fund</h4>
+            <p>Tokenized basket of short-term United States sovereign debt. Managed with automated roll-overs.</p>
+            
+            <div class="asset-metrics-grid">
+              <div class="metric">
+                <span class="m-label">AI Health</span>
+                <span class="m-val text-cyan">99.9%</span>
+              </div>
+              <div class="metric">
+                <span class="m-label">Proj. APY</span>
+                <span class="m-val text-gold">5.45%</span>
+              </div>
+              <div class="metric">
+                <span class="m-label">Token TVL</span>
+                <span class="m-val">$45,210,000</span>
+              </div>
+            </div>
+          </div>
+          <div class="asset-footer">
+            <button class="btn btn-outline btn-full card-action-btn" data-target-cmd="assetra scan AST-02">Scan Asset Detail</button>
+          </div>
+        </div>
+
+        <!-- Asset 3 -->
+        <div class="asset-card glass rm-card" id="featCard3">
+          <div class="asset-image-placeholder red-glow">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#ff4a4a" stroke-width="1.5">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+            <span class="asset-id-tag monospace">AST-03</span>
+          </div>
+          <div class="asset-body">
+            <div class="asset-meta">
+              <span class="asset-category">LUXURY COMMODITY</span>
+              <span class="asset-status warning">HIGH VOLATILITY</span>
+            </div>
+            <h4>Rare Fine Art Portfolio</h4>
+            <p>Blue-chip contemporary paintings held in secure Swiss vault. Insured and valued via consensus.</p>
+            
+            <div class="asset-metrics-grid">
+              <div class="metric">
+                <span class="m-label">AI Health</span>
+                <span class="m-val text-cyan">87.2%</span>
+              </div>
+              <div class="metric">
+                <span class="m-label">Proj. APY</span>
+                <span class="m-val text-gold">14.12%</span>
+              </div>
+              <div class="metric">
+                <span class="m-label">Token TVL</span>
+                <span class="m-val">$7,500,000</span>
+              </div>
+            </div>
+          </div>
+          <div class="asset-footer">
+            <button class="btn btn-outline btn-full card-action-btn" data-target-cmd="assetra scan AST-03">Scan Asset Detail</button>
+          </div>
+        </div>
+
+        <!-- Asset 4 -->
+        <div class="asset-card glass rm-card" id="featCard4">
+          <div class="asset-image-placeholder emerald-glow">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="1.5">
+              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zM12 6v6l4 2"></path>
+            </svg>
+            <span class="asset-id-tag monospace">AST-04</span>
+          </div>
+          <div class="asset-body">
+            <div class="asset-meta">
+              <span class="asset-category">REGEN FINANCE</span>
+              <span class="asset-status active">UNDERWRITTEN</span>
+            </div>
+            <h4>Solar Energy Grid Pool</h4>
+            <p>Yield originating from solar grid infrastructure in APAC region, generating carbon offset credits.</p>
+            
+            <div class="asset-metrics-grid">
+              <div class="metric">
+                <span class="m-label">AI Health</span>
+                <span class="m-val text-cyan">92.6%</span>
+              </div>
+              <div class="metric">
+                <span class="m-label">Proj. APY</span>
+                <span class="m-val text-gold">10.50%</span>
+              </div>
+              <div class="metric">
+                <span class="m-label">Token TVL</span>
+                <span class="m-val">$9,820,000</span>
+              </div>
+            </div>
+          </div>
+          <div class="asset-footer">
+            <button class="btn btn-outline btn-full card-action-btn" data-target-cmd="assetra scan AST-04">Scan Asset Detail</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Analytics and TVL Section -->
+  <section id="analytics" class="analytics-sec">
+    <div class="container">
+      <div class="analytics-wrapper glass">
+        <div class="analytics-header">
+          <div>
+            <span class="section-subtitle monospace text-cyan">TRANSACTION AUDIT</span>
+            <h3 class="section-title">Network Underwriting Activity</h3>
+          </div>
+          <div class="analytics-timeframe">
+            <span class="badge active">LIVE METRICS</span>
+          </div>
+        </div>
+
+        <div class="analytics-content-grid">
+          <!-- Live Chart -->
+          <div class="analytics-chart-col">
+            <div class="chart-wrapper">
+              <canvas id="analyticsMainChart" height="280"></canvas>
+            </div>
+          </div>
+
+          <!-- Stats Dashboard -->
+          <div class="analytics-stats-col">
+            <div class="stat-card">
+              <span class="stat-lbl text-gray monospace">TOTAL VALUE UNDERWRITTEN (TVU)</span>
+              <div class="stat-big-val text-gradient-gold" id="counterTVU">$75,080,000</div>
+              <p class="stat-desc">Cumulative value verified, tokenized, and actively managed by AI Oracles.</p>
+            </div>
+            
+            <div class="stat-card">
+              <span class="stat-lbl text-cyan monospace">AI AGENT EFFICIENCY</span>
+              <div class="stat-big-val" id="counterSpeed">99.85%</div>
+              <p class="stat-desc">Consensus reliability percentage and automated yield rebalancing success rate.</p>
+            </div>
+
+            <div class="stat-card">
+              <span class="stat-lbl text-gray monospace">GAS SAVED VS TRADITIONAL AUDITS</span>
+              <div class="stat-big-val text-gradient-cyan" id="counterSavings">$1,489,200</div>
+              <p class="stat-desc">Frictional legal fees and surveyor cost bypassed using autonomous tokenizers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Developer Documentation/Guide -->
+  <section id="docs" class="docs-sec">
+    <div class="container">
+      <div class="docs-grid-layout">
+        <div class="docs-left" id="docsLeftCol">
+          <span class="section-subtitle monospace text-cyan">INTEGRATION SDK</span>
+          <h2 class="section-title">Build On Assetra</h2>
+          <p class="section-description">
+            Assetra provides an open-source JavaScript/TypeScript SDK and smart contracts to interact programmatically. Integrate asset valuation feeds directly into your DeFi protocols or automate asset minting.
+          </p>
+          <div class="docs-nav-list">
+            <div class="doc-nav-item active" data-tab="install">1. Installation</div>
+            <div class="doc-nav-item" data-tab="initialize">2. Initializing Client</div>
+            <div class="doc-nav-item" data-tab="fetch">3. Querying Assets</div>
+            <div class="doc-nav-item" data-tab="mint">4. Automating Mint</div>
+          </div>
+        </div>
+
+        <div class="docs-cards" id="docsCardsCol">
+          <div class="doc-card glass active" id="tabContent-install">
+            <div class="doc-card-header">
+              <span class="badge monospace text-cyan">TERMINAL</span>
+              <h4>Install SDK CLI</h4>
+            </div>
+            <p>To access Assetra CLI tools and developer packages locally, install the global package via Node.js NPM.</p>
+            <div class="code-block-container">
+              <pre><code class="language-bash"># Install globally using npm
+npm install -g @assetra/sdk
+
+# Verify installation
+assetra --version
+# Output: Assetra-SDK v1.0.4</code></pre>
+            </div>
+          </div>
+
+          <div class="doc-card glass" id="tabContent-initialize">
+            <div class="doc-card-header">
+              <span class="badge monospace text-cyan">JAVASCRIPT</span>
+              <h4>Initialize Connection</h4>
+            </div>
+            <p>Import and instantiate the Assetra Client to connect to the decentralized AI underwriter node network.</p>
+            <div class="code-block-container">
+              <pre><code class="language-javascript">import { AssetraClient } from '@assetra/sdk';
+
+const client = new AssetraClient({
+  rpcUrl: 'https://rpc.robinhood.chain',
+  apiKey: process.env.ASSETRA_API_KEY
+});
+
+await client.connect();
+console.log('Connected to Assetra Node.');</code></pre>
+            </div>
+          </div>
+
+          <div class="doc-card glass" id="tabContent-fetch">
+            <div class="doc-card-header">
+              <span class="badge monospace text-cyan">JAVASCRIPT</span>
+              <h4>Retrieve RWA Statistics</h4>
+            </div>
+            <p>Query asset analytics, valuation consensus data, and historical reports computed by AVE agents.</p>
+            <div class="code-block-container">
+              <pre><code class="language-javascript">// Fetch specific asset by ID
+const asset = await client.getAsset('AST-01');
+
+console.log(`Asset Title: ${asset.name}`);
+console.log(`AI Confidence Score: ${asset.aiHealth}%`);
+console.log(`Consensus Price: $${asset.valuation}`);</code></pre>
+            </div>
+          </div>
+
+          <div class="doc-card glass" id="tabContent-mint">
+            <div class="doc-card-header">
+              <span class="badge monospace text-cyan">JAVASCRIPT</span>
+              <h4>Automate RWA Tokenization</h4>
+            </div>
+            <p>Initiate a compliant on-chain tokenizer contract deployment for new real-world assets.</p>
+            <div class="code-block-container">
+              <pre><code class="language-javascript">// Trigger legal tokenizer agent mint sequence
+const receipt = await client.mintFractional({
+  assetId: 'AST-02',
+  amount: 5000, // Mint 5000 fractional tokens
+  owner: '0x3f5CE...671'
+});
+
+console.log(`Transaction Hash: ${receipt.txHash}`);
+console.log(`Mint Completed: ${receipt.status}`);</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-glow"></div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+              <!-- Outer Hexagon in Neon Green -->
+              <polygon points="16,2 30,9 30,23 16,30 2,23 2,9" stroke="#b5ff2d" stroke-width="1.8" fill="none" />
+              
+              <!-- Inner 3D Network Wireframe in Cyan -->
+              <path d="M16,6 L24,11 L24,21 L16,26 L8,21 L8,11 Z" stroke="#00e5ff" stroke-width="1" stroke-opacity="0.8" />
+              <path d="M16,6 L16,13 L11,15 L8,11 M16,13 L21,15 L24,11 M11,15 L21,15 M11,15 L8,21 M21,15 L24,21 M11,15 L16,26 M21,15 L16,26 M16,13 L16,26" stroke="#00e5ff" stroke-width="1" stroke-opacity="0.8" />
+              <path d="M8,11 L16,13 L24,11" stroke="#00e5ff" stroke-width="1" stroke-opacity="0.8" />
+
+              <!-- Nodes -->
+              <circle cx="16" cy="6" r="1.5" fill="#00e5ff" />
+              <circle cx="24" cy="11" r="1.5" fill="#00e5ff" />
+              <circle cx="24" cy="21" r="1.5" fill="#00e5ff" />
+              <circle cx="16" cy="26" r="1.5" fill="#00e5ff" />
+              <circle cx="8" cy="21" r="1.5" fill="#00e5ff" />
+              <circle cx="8" cy="11" r="1.5" fill="#00e5ff" />
+              <circle cx="16" cy="13" r="1.8" fill="#b5ff2d" />
+              <circle cx="11" cy="15" r="1.5" fill="#00e5ff" />
+              <circle cx="21" cy="15" r="1.5" fill="#00e5ff" />
+            </svg>
+            <span>ASSETRA</span>
+          </div>
+          <p>
+            Building the decentralized infrastructure for algorithmic RWA underwriting and tokenization. Real-world wealth, programmatically unlocked.
+          </p>
+          <div class="social-links">
+            <a href="https://x.com/assetrarh?s=11" target="_blank" rel="noopener noreferrer" aria-label="Assetra Twitter">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Assetra GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-nav">
+          <h5>Ecosystem</h5>
+          <ul>
+            <li><a href="#assets-showcase">Real Estate</a></li>
+            <li><a href="#assets-showcase">Fixed Income</a></li>
+            <li><a href="#assets-showcase">Fine Art Portfolio</a></li>
+            <li><a href="#analytics">Active TVL</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-nav">
+          <h5>Developers</h5>
+          <ul>
+            <li><a href="#docs">SDK Guide</a></li>
+            <li><a href="#terminal-section">Terminal CLI</a></li>
+            <li><a href="#">Security Audits</a></li>
+            <li><a href="#">GitHub Repo</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-newsletter">
+          <h5>Stay Updated</h5>
+          <p>Subscribe to our node updates for weekly underwriting reports and active asset announcements.</p>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" placeholder="enter-email@domain.com" class="monospace" required aria-label="Newsletter Email Address" />
+            <button type="submit" class="btn btn-primary btn-newsletter">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Assetra Protocol. Built for Robinhood Chain ecosystems. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Compliance Disclosures</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
