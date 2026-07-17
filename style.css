@@ -1545,6 +1545,14 @@ input, button, select, textarea {
     margin-left: auto;
     margin-right: auto;
   }
+  .hero-cli-widget {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-buttons {
+    justify-content: center;
+    width: 100%;
+  }
   #agentBubble1 {
     left: 0;
   }
@@ -1601,7 +1609,7 @@ input, button, select, textarea {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: var(--nav-height);
+    top: 100%;
     left: 0;
     width: 100%;
     background: var(--bg-secondary);
@@ -1622,8 +1630,35 @@ input, button, select, textarea {
     transform: rotate(-45deg) translate(6px, -6px);
   }
 
+  .floating-agent-bubble {
+    display: none !important;
+  }
+
+  .fleet-cards {
+    grid-template-columns: 1fr;
+  }
+
   .assets-grid {
     grid-template-columns: 1fr;
+  }
+
+  .visual-chart-container canvas,
+  .chart-wrapper canvas {
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+  }
+
+  .stat-card {
+    padding-left: 0;
+    border-left: none;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 16px;
+    text-align: center;
+  }
+  .stat-card:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
   }
 
   .analytics-content-grid {
@@ -1638,5 +1673,48 @@ input, button, select, textarea {
   .footer-bottom {
     flex-direction: column;
     text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  .section-title {
+    font-size: 1.8rem;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+  .hero-buttons .btn {
+    width: 100%;
+  }
+  .terminal-screen {
+    padding: 16px;
+    height: 320px;
+  }
+  .terminal-input-row {
+    padding: 0 16px 16px 16px;
+  }
+  .asset-metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .asset-metrics-grid .metric {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    padding-bottom: 4px;
+  }
+  .asset-metrics-grid .metric:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .asset-metrics-grid .m-label {
+    margin-bottom: 0;
   }
 }
