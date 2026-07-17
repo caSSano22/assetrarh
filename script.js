@@ -771,26 +771,7 @@ Consensus State : <span class="text-emerald">OPERATIONAL (ACTIVE PARTICIPATION: 
     });
   }
 
-  // Copy Contract Address (CA) Click Handler
-  const navCaBtn = document.getElementById('navCaBtn');
-  if (navCaBtn) {
-    navCaBtn.addEventListener('click', () => {
-      const caAddress = navCaBtn.getAttribute('data-ca');
-      navigator.clipboard.writeText(caAddress).then(() => {
-        const textSpan = navCaBtn.querySelector('span');
-        const originalText = textSpan.textContent;
-        textSpan.textContent = 'CA COPIED!';
-        navCaBtn.style.borderColor = 'var(--accent-cyan)';
-        navCaBtn.style.color = 'var(--accent-cyan)';
-        
-        setTimeout(() => {
-          textSpan.textContent = originalText;
-          navCaBtn.style.borderColor = '';
-          navCaBtn.style.color = '';
-        }, 1500);
-      });
-    });
-  }
+
 
   console.log('%c🤖 ASSETRA PROTOCOL', 'color: #b5ff2d; font-size: 18px; font-weight: bold; font-family: monospace;');
   console.log('%cAI-Autonomous Underwritten Real World Assets (RWA)', 'color: #00e5ff; font-size: 12px; font-family: monospace;');
